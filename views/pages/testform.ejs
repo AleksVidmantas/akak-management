@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <% include ../partials/head %>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body>
+
+        <nav>
+            <% include ../partials/navbar %>
+        </nav>
+
+        <div class="page-body">
+        <h1>Test Form</h1>
+        
+		 <form action="http://web.engr.oregonstate.edu/~zhangluy/tools/class-content/form_tests/check_request.php">
+  			<p>Submits to an OSU Page</p>
+			<br>
+			First name:<br>
+  			<input type="text" name="firstname" value="Alex"><br>
+ 			Complaint:<br>
+  			<input type="text" name="complaint" value="House paint is bad."><br><br>
+  			<input type="submit" value="Submit">
+		</form> 
+
+		<footer>
+            <% include ../partials/footer %>
+        </footer>
+
+        </div>
+    </body>
+</html>
+
+               

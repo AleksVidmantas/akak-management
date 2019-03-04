@@ -1,7 +1,11 @@
 //holds .onload.  I figure this is ok flow since this script is named index, meaning it's the parent. 
 //Make sure carousel is imported first.
 window.onload = function(){
-	carousel_script();
+	try { //try catch to solve pages that only implement this file and not carousel 
+		carousel_script();
+	}catch(error){
+		console.error(error);
+	}
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 	

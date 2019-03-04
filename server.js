@@ -14,10 +14,14 @@ app.get('/', function (req, res) {
 app.get('/about', function (req, res) {
 	res.render('pages/about');
 })
-
 app.get('/location', function (req, res) {
 	res.render('pages/location');
 })
+
+app.get('/testform', function (req, res) {
+	res.render('pages/testform');
+})
+
 
 
 app.use('/test', test_router); //test_routes.js handles all of the sub domains here
