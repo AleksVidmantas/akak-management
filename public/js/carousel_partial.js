@@ -1,4 +1,5 @@
-window.onload = function() {
+function carousel_script() {
+
 var slideIndex = 0;
 carousel();
 
