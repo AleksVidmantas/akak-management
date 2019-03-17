@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <% include ../partials/head %>
+        <script src="js/sqltest.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+   		<style>
+		#sql-table {
+			border: 2px solid green;
+		}
+		</style>
+	 </head>
+
+    <body>
+
+        <nav>
+            <% include ../partials/navbar %>
+        </nav>
+
+        <div class="page-body">
+        <h1>SQL Testing Page</h1>
+        <p>This page is for the final assignment of CS 290 involving SQL.</p>
+		
+        
+        <br>
+		<p>Roll Number</p>
+        <input type="text" id="role" name="rolenumber">
+	
+		
+		<br>
+
+		<p>Issue</p>
+		<input type="text" id="complaint" name="complaints">
+    	<br>
+		<br>
+		<button onclick="fillData()">Magic Submit Button</button>  
+        <br>
+		<br>		
+		<h2>SQL Data Test Table</h2>
+		<table id="sql-table">
+			<tr>
+				<th>Roll Number</th>
+				<th>Complaint</th>
+				<th>Date Filed</th>
+			</tr>
+
+			<tr>
+				<td>1148</td>
+				<td>Noodles taste awful.</td>
+				<td>2019-03-14</td>
+			</tr>		
+		</table>
+		<br>
+		<button>Delete Active Button</button>
+		
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
+
+        </div>
+    </body>
+</html>
+

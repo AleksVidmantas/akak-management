@@ -1,17 +1,17 @@
-var mysql = require('mysql');
+var mysql = require('mysql')
 
-var con = mysql.createConnection({
+var pool = mysql.createPool({
   	host: "localhost",
-  	port: "3306",
+  	port: "3307",
   	user: "root",
-  	password: "gaben101",
+  	password: "gaben102",
 	database: "akak"
 });
 
-con.connect(function(err) {
+pool.getConnection(function(err) {
  	if (err) throw err;
 	console.log("Connected!");
-	con.query("SELECT * FROM complaints", function(err, result, fields){
+	pool.query("SELECT * FROM complaints", function(err, result, fields){
 		if (err) throw err;
 		console.log(result);
 	});
