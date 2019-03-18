@@ -91,17 +91,16 @@ app.post('/subworkouts', function(req, res) { //This is responsible for handling
         res.end();
         if (err) throw err;
         })
-        //console.log(result);
-        //res.write(result,  function(err) { res.end();});
-//http://134.209.10.184/sub    });
-    //  res.write(sql_data[0].issue); 
-//  res.end();
-//  console.log("Test: " + sql_data + " end test.");
-
 
 })
 
+app.post('/subworkoutsdelete', function(req, res){
 
+	pool.query("delete from workouts where id = (select id from (select id from workouts order by id limit " + (req.body.index-1) + ",1) as t);" , function(err, result, fields){
+		res.end();
+	})
+
+})
 
 
 app.post('/sub', function(req, res) { //This is responsible for handling SQL

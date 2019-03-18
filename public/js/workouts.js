@@ -5,6 +5,7 @@ function onStart(){
 	
 }
 function updateTable(callback){
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", '/subworkouts', true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -35,6 +36,8 @@ function updateTable(callback){
 	xhr.send("type=update");
 	console.log("Table updating");
 	setTimeout(callback(), 2000);
+
+
 }
 
 
