@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <% include ../partials/head %>
+        <script src="js/workouts.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+   		<style>
+		#sql-table {
+			border: 2px solid green;
+		}
+		</style>
+	 </head>
+
+    <body>
+
+        <nav>
+            <% include ../partials/navbar %>
+        </nav>
+
+        <div class="page-body">
+        <h1>SQL Workout Tracker</h1>
+        <p>This page is for the final assignment of CS 290 involving SQL.</p>
+		
+        
+        <br>
+		<p>Workout Type (DL, SQ, OP, BP)</p>
+        <input type="text" id="name" name="name">
+	
+		
+		<br>
+		<p>Repetitions</p>
+		<input type="text" id="reps" name="complaints">
+    	
+		<br>
+		<p>Weight (lbs preferred)</p>
+		<input type="text" id="weight" name="weight">
+
+		<br>
+		<br>
+		<button onclick="fillData()">Magic Submit Button</button>  
+        <br>
+		<br>		
+		<h2>SQL Data Test Table</h2>
+		<table id="sql-table">
+			<tr>
+				<th>Workout Type</th>
+				<th>Reps</th>
+				<th>Weight (lbs)</th>
+				<th>Date</th>
+			</tr>
+
+			<tr>
+				<td>SQ</td>
+				<td>6</td>
+				<td>120</td>
+				<td>2019-03-14</td>
+			</tr>		
+		</table>
+		<br>
+		<button onclick="up()">UP</button>
+		<button onclick="down()">DOWN</button>
+		<button onclick="deleteActive()">Delete Active Button</button>
+		
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
+
+        </div>
+    </body>
+</html>
+

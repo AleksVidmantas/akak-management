@@ -46,6 +46,10 @@ app.get('/testform', function (req, res) {
 app.get('/sqltest', function(req, res) {
 	res.render('pages/sqltest');
 })
+app.get('/workouts', function (req, res) {
+    res.render('pages/workouts');
+})
+
 // '/sub' is used for getting and receiving sql post data
 app.get('/sub', function(req, res) {
 	console.log("Req '/sub' GET: " + req.body);
@@ -58,6 +62,47 @@ app.get('/sub', function(req, res) {
 	 }); 
 	
 })
+//For sending data to client regarding workout DB
+app.get('/subworkouts', function(req, res) {
+    console.log("Req '/sub' GET: " + req.body);
+    pool.query("SELECT * FROM workouts;", function(err, result, fields){
+        console.log(result);
+        if (err) throw err;
+        res.end(JSON.stringify(result));
+        //console.log(result[1].issue);
+    
+     }); 
+    
+})
+app.post('/subworkouts', function(req, res) { //This is responsible for handling SQL
+    //res.render('pages/sqltest');
+    console.log("post func");
+    console.log(req.body);
+    console.log(req.body.name);
+    console.log(req.body.weight);
+	console.log(req.body.reps);
+    var sql_data;
+    var d = new Date();
+	console.log("DMonth: " + d.getMonth());
+    console.log("INSERT INTO workouts (name, reps, weight, date, lbs) VALUEs ( " + req.body.name+ ", " +"\x22" + req.body.reps + "\x22, \x27" + req.body.weight + "\x22, \x27" + d.getFullYear()+"-"+pad(d.getMonth(),2)+"-"+pad(d.getDate(),2) + "\x27, TRUE);");
+    pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUEs (\x22" + req.body.name+ "\x22, " +"\x22" + req.body.reps + "\x22, \x22" + req.body.weight + "\x22, \x27" + d.getFullYear()+"-"+pad(d.getMonth()+1,2)+"-"+pad(d.getDate(),2) + "\x27, TRUE);", function(err, result, fields){
+        sql_data = result;
+        //res.write(result[0].issue);
+        res.end();
+        if (err) throw err;
+        })
+        //console.log(result);
+        //res.write(result,  function(err) { res.end();});
+//http://134.209.10.184/sub    });
+    //  res.write(sql_data[0].issue); 
+//  res.end();
+//  console.log("Test: " + sql_data + " end test.");
+
+
+})
+
+
+
 
 app.post('/sub', function(req, res) { //This is responsible for handling SQL
 	//res.render('pages/sqltest');
@@ -93,7 +138,9 @@ app.listen(80, function () {
 
 
 function pad(n, width, z) {
+	console.log("Month passed: " + n );
   z = z || '0';
   n = n + '';
+	console.log("Perceived month: " +  (n.length >= width ? n : new Array(width - n.length + 1).join(z) + n));
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
